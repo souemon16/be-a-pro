@@ -1,17 +1,11 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const port = 3000;
 
 const { MongoClient } = require('mongodb');
-const db = 'mongodb+srv://souravemon:findapro@cluster0.aoyvm.mongodb.net/findapro?retryWrites=true&w=majority';
-mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
-.then(() => {
-    console.log("connection successful");
-})
-.catch((error) => {
-    console.log("connection unsuccessful");
-});
+dotenv.config({ path: './config.env' });
+require('./db/connection');
 
 app.get('/', (req, res) => {
     res.send("Hello World")
