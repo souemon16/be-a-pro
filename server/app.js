@@ -7,14 +7,8 @@ const { MongoClient } = require('mongodb');
 dotenv.config({ path: './config.env' });
 require('./db/connection');
 
-app.get('/', (req, res) => {
-    res.send("Hello World")
-});
-
-app.get('/about', (req, res) => {
-    res.send("Hello World from about")
-});
-
+app.use(express.json());
+app.use(require('./router/auth'));
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
