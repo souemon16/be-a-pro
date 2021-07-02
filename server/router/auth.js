@@ -25,6 +25,7 @@ router.post('/sign-up', async (req, res) => {
             res.status(422).json({ error: "This email is already exist. Please Sign In." })
         } else {
             const user = new User({ name, email, phone, work, password, cpassword });
+            
             const registerUser = await user.save();
             if (registerUser) {
                 res.status(201).json({ message: "Successfully created new account" });
