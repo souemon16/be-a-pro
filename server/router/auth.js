@@ -52,6 +52,11 @@ router.post('/sign-in', async (req, res) => {
             const isMatch = await bcrypt.compare(password, userExist.password);
 
             const token = await userExist.generateAuthToken();
+            res.cookie("jwtToken", token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true
+            });
+
             if(!isMatch){
                 res.status(400).json({message: "Invalid Credentials"});
             } else {
@@ -65,5 +70,6 @@ router.post('/sign-in', async (req, res) => {
         console.log(error);
     }
 })
+
 
 module.exports = router;
