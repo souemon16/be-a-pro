@@ -5,12 +5,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
     height: 80vh;
-    /* background-color: #f8f9fb; */
     display: flex;
     flex-direction: row-reverse;
     box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
     z-index: -10000000000;
     margin-top: 10px;
+    background-color: #1abc9c;
+    border-radius: 10px;
 }
 .signin-form{
     display: flex;
