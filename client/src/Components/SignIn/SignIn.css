@@ -1,0 +1,42 @@
+.signin-container{ 
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 80vh;
+    /* background-color: #f8f9fb; */
+    display: flex;
+    flex-direction: row-reverse;
+    box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
+    z-index: -10000000000;
+    margin-top: 10px;
+}
+.signin-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 55%;
+}
+.signup-para{
+    padding-top: 40px;
+}
+
+/* Responsive  */
+@media(max-width: 768px){
+    .signin-container{
+        width: 100%;
+        position: static;
+        transform: translate(0,0);
+    }
+    .image{
+        display: none;
+    }
+    .signin-form{
+        width: 100%;
+    }
+    .signin-container{
+        height: 100vh;
+    }
+}
