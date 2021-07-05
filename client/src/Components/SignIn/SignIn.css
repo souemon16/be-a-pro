@@ -8,22 +8,23 @@
     display: flex;
     flex-direction: row-reverse;
     box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
-    z-index: -10000000000;
+    z-index: -100;
     margin-top: 10px;
     background-color: #1abc9c;
     border-radius: 10px;
 }
 .signin-form{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 55%;
+    overflow: hidden;
 }
 .signup-para{
     padding-top: 40px;
 }
-
 /* Responsive  */
 @media(max-width: 768px){
     .signin-container{

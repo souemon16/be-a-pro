@@ -1,0 +1,36 @@
+.about-container{
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    padding: 2rem;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.des p, .des h6{
+display: inline-block;
+}
+.card{
+    width: 70%;
+    background-color: #1abc9c;
+    overflow: hidden;
+}
+.card-image{
+    width: 100%;
+    height: 100%;
+}
+.circle.three {
+    width: 130px;
+    height: 130px;
+    bottom: 200px;
+    left: 440px;
+}
+  
+.circle.four {
+    width: 80px;
+    height: 80px;
+    bottom: 10px;
+    left: 300px;
+}

@@ -1,0 +1,197 @@
+.home-container{
+    background: linear-gradient(
+        to right, 
+        #1abc9c 0%, 
+        #1abc9c 50%, 
+        #fff 50%, 
+        #fff 100%
+      );
+    position: relative;
+    width: 100%;
+    min-height: 92vh;
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.search-result{
+    background-color: orange;
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    padding: 2rem;
+    overflow: hidden;
+    display: none;
+}
+.home-heading {
+    z-index: 10;
+}
+.home-heading h1{
+    font-weight: 500;
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 0.7rem;
+    letter-spacing: 6px;
+    display: inline-block;
+}
+.searchbar{
+    position: relative;
+    margin-top: 20px;
+    z-index: 10;
+}
+.searchbar label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: rgb(29, 24, 24);
+    letter-spacing: 12px;
+}
+.searchbar #search{
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(to right, #fff 49%, #1abc9c 50%);
+    border-image-slice: 1;
+    color: #000;
+}
+.focus-input-home{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.focus-input-home::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.6s;
+    background: #05386B;
+    background: linear-gradient(
+        to right, 
+        #05386B 0%, 
+        #05386B 49%, 
+        #000 50%, 
+        #000 100%
+      );
+}
+input:focus + .focus-input-home::before{
+    width: 100%;
+}
+.has-val.input + .focus-input-home::before{
+    width: 100%;
+}
+.home-left{
+    color: #fff;
+}
+.home-right{
+    color: #1abc9c;
+}
+/* Home Shapes */
+.big-circle-home {
+    position: absolute;
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.39);
+    top: 4%;
+    left: 2%;
+    animation-name: circleMover;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 5s;
+  }
+  .big-circle-home:after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-color: #1abc9c;
+    border-radius: 50%;
+    top: calc(50% - 65px);
+    left: calc(50% - 65px);
+  }
+  @keyframes circleMover {
+      0%   {top: 4%;}
+      100% {top: 20%;}
+  }
+
+
+/*------------ Responsiveness --------------- */
+@media (max-width: 878px) {
+    .home-heading h1{
+        font-size: 3rem;
+    }
+    .searchbar label{
+        font-size: 1.3rem;
+    }
+}
+@media (max-width: 878px) {
+    .home-heading h1{
+        font-size: 2.5rem;
+        line-height: 1;
+        margin-bottom: 0.7rem;
+        letter-spacing: 6px;
+    }
+    .searchbar label{
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 9px;
+    }
+}
+@media (max-width: 684px) {
+    .home-heading h1{
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 0.7rem;
+        letter-spacing: 6px;
+    }
+    .searchbar label{
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 8px;
+    }
+}
+@media (max-width: 591px) {
+    .home-heading{
+        display: flex;
+        word-break: break-all;
+    }
+    .home-heading h1{
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 0.7rem;
+        letter-spacing: 4px;
+        width: 100%;
+    }
+    .searchbar{
+        word-break: break-all;
+    }
+    .searchbar label{
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 8px;
+    }
+    .big-circle-home{
+        display: none;
+    }
+}

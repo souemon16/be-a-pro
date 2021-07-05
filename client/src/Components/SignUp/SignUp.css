@@ -1,3 +1,20 @@
+.signup{
+    overflow: hidden;
+}
+.signup-container{ 
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    height: 85vh;
+    display: flex;
+    box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    background-color: #1abc9c;
+    border-radius: 10px;
+    z-index: -1000000;
+}
 input{
     outline: none;
     border: none;
@@ -13,26 +30,14 @@ input{
     color: #ffffff;
     padding: 10px 0;
 }
-.signup-container{ 
-    width: 70%;
-    position: absolute;
-    left: 50%;
-    top: 53%;
-    transform: translate(-50%, -50%);
-    height: 85vh;
-    display: flex;
-    box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
-    z-index: -10000000000;
-    margin-top: 10px;
-    background-color: #1abc9c;
-    border-radius: 10px;
-}
 .signup-form{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 55%;
+    overflow: hidden;
 }
 .image{
     width: 45%;
@@ -98,7 +103,6 @@ input{
     border: 2px solid #fafafa;
 }
 .sign-btn:hover{
-    /* background: #1abc9c; */
     background-color: transparent;
     color: #fff;
 }
@@ -147,6 +151,36 @@ input[type="number"]{
     width: 48%;
     position: relative;
 }
+.big-circle-signup {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #1cd4af, #159b80);
+    bottom: 50%;
+    right: 50%;
+    transform: translate(-40%, 38%);
+    animation-name: circleMover;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: -100000000000000000000000000000000000;
+  }
+  .big-circle-signup:after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    top: calc(50% - 180px);
+    left: calc(50% - 180px);
+  }
+  @keyframes circleMover {
+      0%   {right: 50%;}
+      100% {right: 40%;}
+  }
 /* Responsive  */
 @media(max-width: 768px){
     .signup-container{

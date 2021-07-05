@@ -5,8 +5,13 @@ import signUpImage from "../../Resources/Images/signup-image.jpg";
 const SignUp = () => {
   return (
     <React.Fragment>
+      <div className="signup">
       <div className="signup-container">
         <div className="signup-form">
+        <span className="circle one"></span>
+            <span className="circle two"></span>
+            <span className="circle three"></span>
+            <span className="circle four"></span>
           <div className="heading">
             <h1>Registration Form</h1>
           </div>
@@ -54,6 +59,8 @@ const SignUp = () => {
         <div className="image">
           <img src={signUpImage} alt="SignUp Image" className="img" />
         </div>
+      </div>
+      <span className="big-circle-signup"></span>
       </div>
     </React.Fragment>
   );
