@@ -6,7 +6,7 @@ const SignIn = () => {
     return (
         <React.Fragment>
             <div className="signin-container">
-            <span className="big-circle"></span>
+            <span className="big-circle-signup"></span>
             <div className="signin-form">
             <span className="circle two"></span>
             <span className="circle three"></span>

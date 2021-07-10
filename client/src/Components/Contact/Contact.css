@@ -231,8 +231,11 @@
   right: 50px;
   opacity: 0.3;
 }
-
-.big-circle {
+@keyframes circleMover {
+  0%   {right: 50%;}
+  100% {right: 40%;}
+}
+.big-circle{
   position: absolute;
   width: 500px;
   height: 500px;
@@ -241,11 +244,11 @@
   bottom: 50%;
   right: 50%;
   transform: translate(-40%, 38%);
-  animation-name: circleMover;
   animation-duration: 4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  animation-name: circleMover;
 }
 .big-circle:after {
   content: "";
@@ -256,10 +259,6 @@
   border-radius: 50%;
   top: calc(50% - 180px);
   left: calc(50% - 180px);
-}
-@keyframes circleMover {
-    0%   {right: 50%;}
-    100% {right: 40%;}
 }
 .square {
     position: absolute;

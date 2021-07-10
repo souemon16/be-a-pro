@@ -110,7 +110,7 @@ input:focus + .focus-input-home::before{
     background: rgba(255, 255, 255, 0.39);
     top: 4%;
     left: 2%;
-    animation-name: circleMover;
+    animation-name: circleMoverHome;
     animation-duration: 4s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -127,7 +127,7 @@ input:focus + .focus-input-home::before{
     top: calc(50% - 65px);
     left: calc(50% - 65px);
   }
-  @keyframes circleMover {
+  @keyframes circleMoverHome {
       0%   {top: 4%;}
       100% {top: 20%;}
   }

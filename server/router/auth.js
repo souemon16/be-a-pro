@@ -15,9 +15,9 @@ router.get('/about', (req, res) => {
 });
 
 router.post('/sign-up', async (req, res) => {
-    const { name, email, phone, work, password, cpassword } = req.body;
+    const { name, email, phone, work, password, confirmpassword } = req.body;
 
-    if (!name || !email || !phone || !work || !password || !cpassword) {
+    if (!name || !email || !phone || !work || !password || !confirmpassword) {
         res.status(422).json({ error: "This field can't be empty. Please fill it out" })
     }
 
@@ -26,7 +26,7 @@ router.post('/sign-up', async (req, res) => {
         if (userExist) {
             res.status(422).json({ error: "This email is already exist. Please Sign In." })
         } else {
-            const user = new User({ name, email, phone, work, password, cpassword });
+            const user = new User({ name, email, phone, work, password, confirmpassword });
 
             const registerUser = await user.save();
             if (registerUser) {

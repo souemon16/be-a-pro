@@ -1,5 +1,6 @@
 .signup{
     overflow: hidden;
+    background: transparent;
 }
 .signup-container{ 
     width: 70%;
@@ -160,7 +161,7 @@ input[type="number"]{
     bottom: 50%;
     right: 50%;
     transform: translate(-40%, 38%);
-    animation-name: circleMover;
+    animation-name: circleMoverSignUp;
     animation-duration: 4s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -176,8 +177,9 @@ input[type="number"]{
     border-radius: 50%;
     top: calc(50% - 180px);
     left: calc(50% - 180px);
+    overflow: hidden;
   }
-  @keyframes circleMover {
+  @keyframes circleMoverSignUp {
       0%   {right: 50%;}
       100% {right: 40%;}
   }
