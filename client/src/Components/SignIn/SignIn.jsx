@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import './SignIn.css';
 import signInImage from '../../Resources/Images/signin-image.jpg';
 
 const SignIn = () => {
+  let history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loginUser = async(e) => {
+    e.preventDefault();
+
+    const res = await fetch('/sign-in', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email, password
+      })
+    });
+
+    const data = res.json();
+    if(res.status === 400 || !data){
+      window.alert("Invalid Credentials")
+    }else {
+      window.alert("Login Successfull")
+      history.push('/');
+    }
+  }
     return (
         <React.Fragment>
             <div className="signin-container">
@@ -16,15 +42,15 @@ const SignIn = () => {
               </div>
               <div className="wrap2">
                 <label htmlFor="email">E-mail</label>
-                <input type="email" name="email" id="email" />
+                <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <span className="focus-input"></span>
               </div>
               <div className="wrap2">
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" />
+                <input type="password" name="password" id="password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
                 <span className="focus-input"></span>
               </div>
-              <button className="sign-btn" type="submit">Sign In</button>
+              <button className="sign-btn" type="submit" onClick={loginUser} >Sign In</button>
               <p className="signup-para">Don't Have a Account. Please Sign Up</p>
             </div>
             <div className="image">
