@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./About.css";
 import profile from '../../Resources/Images/profile.jpg';
 import shape from "../../Resources/Images/shape.png";
+import { useHistory } from "react-router-dom";
 
 const About = () => {
+    let history = useHistory();
+
+    const callAboutPage = async () => {
+      try {
+        const res = await fetch('/about', {
+          method: 'GET',
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include"
+        });
+
+        const data = await res.json();
+
+        if(!res.status === 200){
+          const error = new Error();
+          throw error;
+        }
+
+      } catch (error) {
+        console.log(error);
+        history.push('/sign-in');
+      }
+      
+    }
+
+  useEffect(() => {
+    callAboutPage();
+  }, [])
+
   return (
     <React.Fragment>
       <div className="about-container">
