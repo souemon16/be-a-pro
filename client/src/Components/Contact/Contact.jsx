@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Contact.css";
 import shape from "../../Resources/Images/shape.png";
 import email from "../../Resources/Images/email.png";
@@ -8,6 +8,36 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const Contact = () => {
+
+  const [userData, setUserData] = useState({});
+
+  const callContactPage = async () => {
+    try {
+      const res = await fetch('/getData', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
+
+      const data = await res.json();
+      setUserData(data);
+
+      if(!res.status === 200){
+        const error = new Error();
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+    
+  }
+
+useEffect(() => {
+  callContactPage();
+}, [])
+
   return (
     <React.Fragment>
       <div className="contact-container">
@@ -64,19 +94,19 @@ const Contact = () => {
 
               <div className="input-container">
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" className="input" />
+                <input type="text" name="name" className="input" value={userData.name} />
                 <span className="focus-input2"></span>
               </div>
 
               <div className="input-container">
                   <label htmlFor="email">Email</label>
-                <input type="email" name="email" className="input" />
+                <input type="email" name="email" className="input" value={userData.email} />
                 <span className="focus-input2"></span>
               </div>
 
               <div className="input-container">
                   <label htmlFor="phone">Phone</label>
-                <input type="tel" name="phone" className="input" />
+                <input type="tel" name="phone" className="input" value={userData.phone} />
                 <span className="focus-input2"></span>
               </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./About.css";
 import profile from '../../Resources/Images/profile.jpg';
 import shape from "../../Resources/Images/shape.png";
@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const About = () => {
     let history = useHistory();
+    const [userData, setUserData] = useState({});
 
     const callAboutPage = async () => {
       try {
@@ -19,6 +20,7 @@ const About = () => {
         });
 
         const data = await res.json();
+        setUserData(data);
 
         if(!res.status === 200){
           const error = new Error();
@@ -54,22 +56,25 @@ const About = () => {
               <div className="card-body d-flex flex-column justify-content-center align-items-start">
                 <h5 className="card-title">Your Profile</h5>
                 <div className="des">
-                <h6>User Id:</h6> <p className="card-text"> 5566524122</p>
+                <h6>User Id:</h6> <p className="card-text"> {userData._id} </p>
                 </div>
                 <div className="des">
-                <h6>Name:</h6> <p className="card-text"> Sourav Sarker Emon</p>
+                <h6>Name:</h6> <p className="card-text"> {userData.name} </p>
                 </div>
                 <div className="des">
-                <h6>Email:</h6> <p className="card-text"> souemon16@gmail.com</p>
+                <h6>Email:</h6> <p className="card-text"> {userData.email} </p>
                 </div>
                 <div className="des">
-                <h6>Phone:</h6> <p className="card-text"> 01303081801</p>
+                <h6>Password:</h6> <p className="card-text"> {userData.password} </p>
                 </div>
                 <div className="des">
-                <h6>Profession:</h6> <p className="card-text"> Full Stack Web Developer</p>
+                <h6>Phone:</h6> <p className="card-text"> {userData.phone} </p>
+                </div>
+                <div className="des">
+                <h6>Profession:</h6> <p className="card-text"> {userData.work} </p>
                 </div>
                 <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
+                  <small className="text-muted">Last updated 30 day ago</small>
                 </p>
                 <button className="btn btn-danger">Edit Profile</button>
               </div>
