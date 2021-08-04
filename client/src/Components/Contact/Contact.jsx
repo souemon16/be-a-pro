@@ -9,7 +9,7 @@ import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/fre
 
 const Contact = () => {
 
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({ name:"", email:"", phone:"", message:"" });
 
   const callContactPage = async () => {
     try {
@@ -21,7 +21,7 @@ const Contact = () => {
       });
 
       const data = await res.json();
-      setUserData(data);
+      setUserData({...userData, name:data.name, email:data.email, phone:data.phone });
 
       if(!res.status === 200){
         const error = new Error();
@@ -37,6 +37,38 @@ const Contact = () => {
 useEffect(() => {
   callContactPage();
 }, [])
+
+const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUserData({...userData, [name]:value })
+}
+
+// Send Message to Backhend 
+const contactForm = async (e) => {
+  e.preventDefault();
+
+  const { name, email, phone, message } = userData;
+
+  const res = await fetch('/contact', {
+    method: "POST",
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify({
+      name, email, phone, message
+    })
+  });
+  const data = await res.json();
+
+  if(!data){
+    console.log("Message not Send")
+  } else {
+    alert("Message Sent");
+    setUserData({...userData, message: ""})
+  }
+}
 
   return (
     <React.Fragment>
@@ -89,34 +121,34 @@ useEffect(() => {
             <span className="circle one"></span>
             <span className="circle two"></span>
 
-            <form action="index.html" autocomplete="off">
+            <form method="POST">
               <h3 className="title">Contact us</h3>
 
               <div className="input-container">
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" className="input" value={userData.name} />
+                <input type="text" name="name" className="input" onChange={handleInput} value={userData.name} />
                 <span className="focus-input2"></span>
               </div>
 
               <div className="input-container">
                   <label htmlFor="email">Email</label>
-                <input type="email" name="email" className="input" value={userData.email} />
+                <input type="email" name="email" className="input" onChange={handleInput} value={userData.email} />
                 <span className="focus-input2"></span>
               </div>
 
               <div className="input-container">
                   <label htmlFor="phone">Phone</label>
-                <input type="tel" name="phone" className="input" value={userData.phone} />
+                <input type="tel" name="phone" className="input" onChange={handleInput} value={userData.phone} />
                 <span className="focus-input2"></span>
               </div>
 
               <div className="input-container textarea">
                   <label htmlFor="message">Message</label>
-                <textarea name="message" className="input"></textarea>
+                <textarea name="message" className="input" onChange={handleInput}></textarea>
                 <span className="focus-input2"></span>
               </div>
 
-              <input type="submit" value="Send" className="btn" />
+              <input onClick={contactForm} type="submit" value="Send" className="btn" />
             </form>
           </div>
         </div>
