@@ -11,6 +11,7 @@ import Contact from './Components/Contact/Contact';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
 import Home from './Components/Home/Home';
+import Logout from "./Components/Logout/Logout";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
 
           <Route path='/sign-up'>
             <SignUp />
+          </Route>
+
+          <Route path='/logout'>
+            <Logout />
           </Route>
 
           <Route exact path='/'>
