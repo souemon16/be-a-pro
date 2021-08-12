@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import './SignIn.css';
 import signInImage from '../../Resources/Images/signin-image.jpg';
 
+import {UserContext} from '../../App';
+
 const SignIn = () => {
+
+  const {state, dispatch} = useContext(UserContext);
+
   let history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +30,7 @@ const SignIn = () => {
     if(res.status === 400 || !data){
       window.alert("Invalid Credentials")
     }else {
+      dispatch({type:"USER", payload: true})
       window.alert("Login Successfull")
       history.push('/');
     }

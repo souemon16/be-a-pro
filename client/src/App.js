@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useReducer } from "react";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -13,39 +13,46 @@ import SignUp from './Components/SignUp/SignUp';
 import Home from './Components/Home/Home';
 import Logout from "./Components/Logout/Logout";
 
+import {initialState, reducer} from '../src/reducer/useReducer';
+
+export const UserContext = createContext();
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <React.Fragment>
-      <Router>
-        <Navbar />
-        <Switch>
+      <UserContext.Provider value={{state, dispatch}}>
+        <Router>
+          <Navbar />
+            <Switch>
 
-          <Route path='/about'>
-            <About />
-          </Route>
+            <Route path='/about'>
+              <About />
+            </Route>
 
-          <Route path='/contact'>
-            <Contact />
-          </Route>
+            <Route path='/contact'>
+              <Contact />
+            </Route>
 
-          <Route path='/sign-in'>
-            <SignIn />
-          </Route>
+            <Route path='/sign-in'>
+              <SignIn />
+            </Route>
 
-          <Route path='/sign-up'>
-            <SignUp />
-          </Route>
+            <Route path='/sign-up'>
+              <SignUp />
+            </Route>
 
-          <Route path='/logout'>
-            <Logout />
-          </Route>
+            <Route path='/logout'>
+              <Logout />
+            </Route>
 
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          
-        </Switch>
-      </Router>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+
+          </Switch>
+        </Router>
+      </UserContext.Provider>
     </React.Fragment>
   );
 }
