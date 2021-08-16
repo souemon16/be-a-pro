@@ -7,9 +7,9 @@ const authenticate = require('../middleware/authenticate');
 require('../db/connection');
 const User = require('../model/userSchema');
 
-router.get('/', (req, res) => {
-    res.send("Hello World from auth.js")
-});
+// router.get('/', (req, res) => {
+//     res.send("Hello World from auth.js")
+// });
 
 router.post('/sign-up', async (req, res) => {
     const { name, email, phone, work, password, confirmpassword } = req.body;

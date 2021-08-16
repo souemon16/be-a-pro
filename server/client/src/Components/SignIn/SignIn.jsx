@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './SignIn.css';
 import signInImage from '../../Resources/Images/signin-image.jpg';
 
@@ -58,7 +58,7 @@ const SignIn = () => {
                 <span className="focus-input"></span>
               </div>
               <button className="sign-btn" type="submit" onClick={loginUser} >Sign In</button>
-              <p className="signup-para">Don't Have a Account. Please Sign Up</p>
+              <p className="signup-para">Don't Have a Account. Please <Link to='/sign-up'> Sign Up </Link> </p>
             </div>
             <div className="image">
                 <img src={signInImage} alt="SignIn Image" className="img" />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./SignUp.css";
 import signUpImage from "../../Resources/Images/signup-image.jpg";
 
@@ -89,13 +89,13 @@ const SignUp = () => {
           <button className="sign-btn" type="submit" onClick={postData}>
             Sign Up
           </button>
-          <p className="login-para">Already Have a Account. Please Log In</p>
+          <p className="login-para">Already Have a Account. Please <Link to='/sign-in'> Log In </Link> </p>
         </div>
         <div className="image">
           <img src={signUpImage} alt="SignUp Image" className="img" />
         </div>
       </div>
-      <span className="big-circle-signup"></span>
+      {/* <span className="big-circle-signup"></span> */}
       </div>
     </React.Fragment>
   );

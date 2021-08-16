@@ -9,16 +9,16 @@ const Home = () => {
       <span className="big-circle-home"></span>
         <img src={shape} className="square" alt="" />
         <div className="home-heading">
-          <h1 className="home-left">Get Professi</h1>{" "}
-          <h1 className="home-right"> onal Worker</h1>
+          <h1 className="home-left">Be a Professi</h1>{"   "}
+          <h1 className="home-right">onal Worker</h1>
         </div>
         <div className="searchbar">
           <label htmlFor="search">
-            <span className="home-left">By search </span>{" "}
-            <span className="home-right">ing here:</span>
+            <span className="home-left">By Sign- </span>{"  "}
+            <span className="home-right"> Up here:</span>
           </label>
-          <input type="search" name="search" id="search" />
-          <span className="focus-input-home"></span>
+          {/* <input type="search" name="search" id="search" />
+          <span className="focus-input-home"></span> */}
         </div>
       </div>
 
